@@ -48,6 +48,10 @@ class PageViewerFragment : Fragment() {
                 super.onPageFinished(view, url)
                 url?.run {
                     urlEditText.setText(this)
+                    activity?.run{
+                        if(this is DataInterface)
+                            (this as DataInterface).pageChange(webView.title.toString())
+                    }
                 }
             }
         }
@@ -65,6 +69,7 @@ class PageViewerFragment : Fragment() {
 
         bkButton.setOnClickListener {
             webView.goBack()
+
         }
 
         fwdButton.setOnClickListener {
