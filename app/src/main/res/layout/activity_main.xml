@@ -7,12 +7,23 @@
     tools:context=".BrowserActivity">
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/page_viewer"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:id="@+id/browser_control"
+        android:layout_width="391dp"
+        android:layout_height="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/page_display"
+        android:layout_width="match_parent"
+        android:layout_height="667dp"
+        android:layout_marginTop="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout="@layout/fragment_page_viewer" />
+        app:layout_constraintTop_toBottomOf="@+id/browser_control" />
 </androidx.constraintlayout.widget.ConstraintLayout>
