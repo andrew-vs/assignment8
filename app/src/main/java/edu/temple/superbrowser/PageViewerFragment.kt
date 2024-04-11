@@ -12,13 +12,14 @@ import android.widget.EditText
 import android.widget.ImageButton
 import androidx.viewpager2.widget.ViewPager2
 
-class PageViewerFragment : Fragment() {
+class PageViewerFragment : Fragment(){
 
     private lateinit var webView: WebView
     private lateinit var goButton: ImageButton
     private lateinit var bkButton: ImageButton
     private lateinit var fwdButton: ImageButton
     private lateinit var urlEditText: EditText
+
 
 
     override fun onCreateView(

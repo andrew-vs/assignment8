@@ -3,6 +3,7 @@ package edu.temple.superbrowser
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Browser
+import android.util.Log
 import android.view.WindowManager
 import androidx.annotation.Px
 import androidx.fragment.app.Fragment
@@ -12,7 +13,7 @@ import androidx.viewpager2.widget.ViewPager2
 class BrowserActivity : AppCompatActivity(), DataInterface {
 
     private var numFragments = 1
-    private val titleList = mutableListOf<String>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +31,8 @@ class BrowserActivity : AppCompatActivity(), DataInterface {
                 return PageViewerFragment()
             }
 
+
+
         }
 
         viewPager2.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback(){
@@ -39,7 +42,9 @@ class BrowserActivity : AppCompatActivity(), DataInterface {
                 positionOffsetPixels: Int
             ) {
                 super.onPageScrolled(position, positionOffset, positionOffsetPixels)
+
                 setTitle("SuperBrowser - " + position)
+
             }
         } )
 
@@ -55,7 +60,6 @@ class BrowserActivity : AppCompatActivity(), DataInterface {
 
     override fun pageChange(title: String) {
         setTitle("SuperBrowser - " + title)
-        titleList.add(title)
     }
     override fun addPage() {
         numFragments++
@@ -63,6 +67,11 @@ class BrowserActivity : AppCompatActivity(), DataInterface {
         (viewPager2.adapter as FragmentStateAdapter).notifyDataSetChanged()
         viewPager2.setCurrentItem(numFragments -1, true)
     }
+
+
+
+
+
 
 
 }
