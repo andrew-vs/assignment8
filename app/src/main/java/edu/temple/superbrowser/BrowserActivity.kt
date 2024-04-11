@@ -37,5 +37,6 @@ class BrowserActivity : AppCompatActivity(), BrowserControlFragment.AddInterface
         numFragments++
         val viewPager2 = findViewById<ViewPager2>(R.id.page_display)
         (viewPager2.adapter as FragmentStateAdapter).notifyDataSetChanged()
+        viewPager2.setCurrentItem(numFragments -1, true)
     }
 }
