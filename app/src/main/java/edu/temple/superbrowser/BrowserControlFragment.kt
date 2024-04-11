@@ -2,6 +2,7 @@ package edu.temple.superbrowser
 
 import android.graphics.pdf.PdfDocument.Page
 import android.os.Bundle
+import android.provider.Browser
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -34,14 +35,18 @@ class BrowserControlFragment : Fragment() {
 
         pageButton = view.findViewById(R.id.imageButton)
 
-       // viewPager.adapter = adapter
-      //  viewPager.setCurrentItem(adapter.itemCount -1, true)
+        pageButton.setOnClickListener{
 
-        /*
-        view.findViewById<ImageButton>(R.id.pageButton).setOnClickListener{
-            adapter.addPage(PageViewerFragment())
-            viewPager.setCurrentItem(adapter.itemCount - 1, true)
-        }*/
+            activity?.run{
+                if(this is AddInterface)
+                    (this as AddInterface).addPage()
+            }
+
+        }
+    }
+
+    interface AddInterface{
+        fun addPage()
     }
 
     companion object {

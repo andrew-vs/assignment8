@@ -7,7 +7,10 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 
-class BrowserActivity : AppCompatActivity() {
+class BrowserActivity : AppCompatActivity(), BrowserControlFragment.AddInterface {
+
+    private var numFragments = 1
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -16,7 +19,7 @@ class BrowserActivity : AppCompatActivity() {
 
         viewPager2.adapter = object: FragmentStateAdapter(this){
             override fun getItemCount(): Int {
-                return 5
+                return numFragments
             }
 
             override fun createFragment(position: Int): Fragment {
@@ -24,7 +27,15 @@ class BrowserActivity : AppCompatActivity() {
             }
 
         }
+
+
         // Ensure browser page isn't added twice
 
+    }
+
+    override fun addPage() {
+        numFragments++
+        val viewPager2 = findViewById<ViewPager2>(R.id.page_display)
+        (viewPager2.adapter as FragmentStateAdapter).notifyDataSetChanged()
     }
 }
